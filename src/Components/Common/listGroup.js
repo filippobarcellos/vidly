@@ -6,7 +6,7 @@ const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
       {genres.map(genre => (
         <li 
           key={genre._id} 
-          class={genre === selectedGenre ? "list-group-item active" : "list-group-item"}
+          className={genre === selectedGenre ? "list-group-item active" : "list-group-item"}
           onClick={() => onGenreSelect(genre)}
         >
           {genre.name}
