@@ -45,6 +45,10 @@ class Movies extends Component {
     this.setState({ selectedGenre: genre, currentPage: 1 });
   }
 
+  handleSort = path => {
+    
+  }
+
   render () {
     const { movies: allMovies, currentPage, itemsPerPage, genres, selectedGenre } = this.state;
 
@@ -77,9 +81,10 @@ class Movies extends Component {
               <MoviesTable 
                 movies={movies} 
                 onDelete={this.handleDelete} 
-                onLike={this.handleLike} 
+                onLike={this.handleLike}
+                onSort={this.handleSort}
               />
-              
+
               <Pagination 
                 itemsCount={moviesFiltered.length} 
                 itemsPerPage={itemsPerPage} 
