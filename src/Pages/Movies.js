@@ -45,13 +45,10 @@ class Movies extends Component {
     this.setState({ selectedGenre: genre, currentPage: 1 });
   }
 
-  handleSort = path => {
-    
-  }
 
   render () {
     const { movies: allMovies, currentPage, itemsPerPage, genres, selectedGenre } = this.state;
-
+    
     if(allMovies.length === 0) {
       return <p>There are no movies in the database</p>
     };
