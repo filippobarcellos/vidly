@@ -1,31 +1,30 @@
-import React from 'react';
+import React from "react";
+import { useMovies } from "../../Context/useMovies";
 
-const Pagination = props => {
-  const { itemsCount, itemsPerPage, currentPage, onPageChange } = props;
+const Pagination = () => {
+  const { allMovies, currentPage, onPageChange, itemsPerPage } = useMovies();
 
-  const pages = [];
-  const totalPagesNumber = Math.ceil(itemsCount / itemsPerPage);
+  const totalPages = Math.ceil(allMovies.length / itemsPerPage);
+  if (totalPages === 1) return null;
 
-  // [1,2,3] array of pages
-  for( let i = 1; i <= totalPagesNumber; i++) {
-    pages.push(i);
-  }
+  const pagesArray = [...Array(totalPages).keys()].map((i) => i + 1);
 
   return (
     <nav>
       <ul className="pagination">
-        {pages.length !== 1 ? pages.map(page => (
-          <li key={page} className={currentPage === page ? "page-item active" : "page-item"}>
-            <a 
-              onClick={() => onPageChange(page)} 
-              className="page-link">
+        {pagesArray.map((page, index) => (
+          <li
+            key={index}
+            className={currentPage === page ? "page-item active" : "page-item"}
+          >
+            <button onClick={() => onPageChange(page)} className="page-link">
               {page}
-            </a>
+            </button>
           </li>
-        )) : null }
+        ))}
       </ul>
     </nav>
-  )
-}
+  );
+};
 
 export default Pagination;

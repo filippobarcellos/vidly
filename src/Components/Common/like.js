@@ -1,17 +1,14 @@
-import React from 'react';
+import React from "react";
 
 const Like = ({ liked, onClick }) => {
-  let classes = "fa fa-heart";
-  if (!liked) classes += "-o";
-
   return (
-    <i 
-      onClick={onClick} 
-      className={classes} 
-      style={{ cursor: "pointer" }} 
-      aria-hidden="true" 
+    <i
+      onClick={onClick}
+      className={liked ? "fa fa-heart" : "fa fa-heart-o"}
+      aria-hidden="true"
+      style={{ cursor: "pointer" }}
     />
-  )
-}
+  );
+};
 
 export default Like;

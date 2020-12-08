@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React, { Component } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { MoviesProvider } from "./Context/useMovies";
 
-import NavBar from './Components/NavBar';
-import Movies from './Pages/Movies';
-import Customers from './Pages/Customers';
-import NotFound from './Pages/404';
-import Rentals from './Pages/Rentals';
-import MovieForm from './Pages/MovieForm';
-import Login from './Pages/Login';
+import NavBar from "./Components/NavBar";
+import Movies from "./Pages/Movies";
+import Customers from "./Pages/Customers";
+import NotFound from "./Pages/404";
+import Rentals from "./Pages/Rentals";
+import MovieForm from "./Pages/MovieForm";
+import Login from "./Pages/Login";
 
 class App extends Component {
   render() {
     return (
-      <>
+      <MoviesProvider>
         <NavBar />
         <main className="container">
           <Switch>
@@ -26,8 +27,8 @@ class App extends Component {
             <Redirect to="/not-found" />
           </Switch>
         </main>
-      </>
-    )
+      </MoviesProvider>
+    );
   }
 }
 
