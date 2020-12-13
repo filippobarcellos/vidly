@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Like from "./Common/like";
 
-const MoviesTable = ({ movies, onDelete, onLike, onSort }) => {
+const MoviesTable = ({ movies, onDelete, onSort }) => {
   return (
     <table className="table">
       <thead>
@@ -27,7 +27,7 @@ const MoviesTable = ({ movies, onDelete, onLike, onSort }) => {
             <td>{movie.numberInStock}</td>
             <td>{movie.dailyRentalRate}</td>
             <td>
-              <Like liked={movie.liked} onClick={onLike(movie)} />
+              <Like movie={movie} />
             </td>
             <td>
               <button

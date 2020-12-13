@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useMovies } from "../Context/useMovies";
 import { getGenres } from "../services/fakeGenreService";
+import { paginate } from "../utils/paginate";
 
 import MoviesTable from "../Components/MoviesTable";
 import Pagination from "../Components/Common/pagination";
 import ListGroup from "../Components/Common/listGroup";
-import { paginate } from "../utils/paginate";
 
 const Movies = () => {
-  const { allMovies, setAllMovies, currentPage, itemsPerPage } = useMovies();
-  const [genres, setGenres] = useState([]);
+  const {
+    allMovies,
+    setAllMovies,
+    currentPage,
+    itemsPerPage,
+    genres,
+  } = useMovies();
   const [selectedGenre, setSelectedGenre] = useState("");
-
-  useEffect(() => {
-    const genres = [{ name: "All Genres" }, ...getGenres()];
-    setGenres(genres);
-  }, []);
 
   const handleDelete = (movie) => {
     allMovies.filter((m) => m._id !== movie._id);
     setAllMovies({ allMovies });
-  };
-
-  const handleLike = (movie) => {
-    const index = allMovies.indexOf(movie);
-    allMovies[index] = { ...allMovies[index], liked: !allMovies[index].liked };
   };
 
   const handleGenreSelect = (genre) => {
@@ -49,11 +44,7 @@ const Movies = () => {
         </div>
         <div className="col-9">
           <p>Showing {allMovies.length} movies in the database</p>
-          <MoviesTable
-            movies={movies}
-            onDelete={handleDelete}
-            onLike={handleLike}
-          />
+          <MoviesTable movies={movies} onDelete={handleDelete} />
 
           <Pagination />
         </div>
