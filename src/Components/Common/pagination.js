@@ -1,10 +1,10 @@
 import React from "react";
 import { useMovies } from "../../Context/useMovies";
 
-const Pagination = () => {
-  const { allMovies, currentPage, setCurrentPage, itemsPerPage } = useMovies();
+const Pagination = ({ movies }) => {
+  const { currentPage, setCurrentPage, itemsPerPage } = useMovies();
 
-  const totalPages = Math.ceil(allMovies.length / itemsPerPage);
+  const totalPages = Math.ceil(movies.length / itemsPerPage);
 
   if (totalPages === 1) return null;
 

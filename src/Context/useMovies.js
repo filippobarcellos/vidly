@@ -8,9 +8,10 @@ export const useMovies = () => useContext(MoviesContext);
 
 export const MoviesProvider = ({ children }) => {
   const [allMovies, setAllMovies] = useState([]);
-  const [genres, setGenres] = useState([]);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("");
 
   useEffect(() => {
     setAllMovies(getMovies());
@@ -25,6 +26,8 @@ export const MoviesProvider = ({ children }) => {
     setAllMovies(newMovies);
   };
 
+  const handleGenreSelect = (genre) => setSelectedGenre(genre);
+
   return (
     <MoviesContext.Provider
       value={{
@@ -35,6 +38,8 @@ export const MoviesProvider = ({ children }) => {
         setCurrentPage,
         handleLike,
         genres,
+        selectedGenre,
+        handleGenreSelect,
       }}
     >
       {children}

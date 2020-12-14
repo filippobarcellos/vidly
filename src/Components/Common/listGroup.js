@@ -1,6 +1,8 @@
 import React from "react";
+import { useMovies } from "../../Context/useMovies";
 
-const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
+const ListGroup = () => {
+  const { genres, handleGenreSelect, selectedGenre } = useMovies();
   return (
     <ul class="list-group">
       {genres.map((genre) => (
@@ -11,7 +13,7 @@ const ListGroup = ({ genres, onGenreSelect, selectedGenre }) => {
               ? "list-group-item active"
               : "list-group-item"
           }
-          onClick={() => onGenreSelect(genre)}
+          onClick={() => handleGenreSelect(genre)}
           style={{ cursor: "pointer" }}
         >
           {genre.name}
